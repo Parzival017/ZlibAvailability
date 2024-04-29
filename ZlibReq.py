@@ -1,4 +1,5 @@
 import requests
+import time
 
 url = "https://zh.zlib-domains.sk/"
 headers = {
@@ -6,25 +7,32 @@ headers = {
     "source": "android",
 }
 
-try:
-    response = requests.get(url, headers=headers)
+output_file = f'./results/{time.strftime("%Y-%m-%d-%H-%M-%S")}.txt'
+with open(output_file, 'w') as f:
+    try:
+        response = requests.get(url, headers=headers)
 
-    def get_avilability(domain):
-        url = f"https://{domain}/eapi/info/ok"
-        try:
-            response = requests.get(url, headers=headers)
-            data = response.json()
-            return data["success"] > 0
-        except Exception as e:
-            print(e)
-
-    data = response.json()
-    for datai in data:
-        domain = datai["domain"]
-        contentAvailable = datai["contentAvailable"]
-        print(f"domain: {domain}, contentAvailable: {contentAvailable}")
-        ok200 = get_avilability(domain)
-        print(f"ok200: {ok200}")
-        
-except Exception as e:
-    print(e)
+        def get_avilability(domain):
+            url = f"https://{domain}/eapi/info/ok"
+            try:
+                response = requests.get(url, headers=headers)
+                data = response.json()
+                return data["success"] > 0
+            except Exception as e:
+                print(e)
+                f.write(f"error: {e}\n")
+                return False
+                
+        data = response.json()
+        for datai in data:
+            domain = datai["domain"]
+            contentAvailable = datai["contentAvailable"]
+            print(f"domain: {domain}, contentAvailable: {contentAvailable}")
+            f.write(f"domain: {domain}, contentAvailable: {contentAvailable}\n")
+            ok200 = get_avilability(domain)
+            print(f"ok200: {ok200}")
+            f.write(f"ok200: {ok200}\n")
+            
+    except Exception as e:
+        print(e)
+        f.write(f"error: {e}\n")
