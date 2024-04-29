@@ -33,6 +33,7 @@ jobs:
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
         git commit -am "Update data" || exit 0
-        git push
+        git push origin HEAD:master
       env:
         REPO_ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+
