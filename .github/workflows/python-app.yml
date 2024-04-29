@@ -34,3 +34,5 @@ jobs:
         git config --local user.name "GitHub Action"
         git commit -am "Update data" || exit 0
         git push
+      env:
+        REPO_ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
