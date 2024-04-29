@@ -4,29 +4,18 @@
 name: Run script every 20 minutes
 
 on:
+  workflow_dispatch:
   schedule:
-    - cron: '*/30 * * * *'
+    - cron: '*/20 * * * *'
 
 jobs:
-  build:
+  run-python-script:
     runs-on: ubuntu-latest
-
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
-
-    - name: Set up Python
-      uses: actions/setup-python@v2
-      with:
-        python-version: '3.x'
-
-    - name: Run script
-      run: python your_script.py
-
-    - name: Commit and push if it changed
-      run: |
-        git diff
-        git config --local user.email "action@github.com"
-        git config --local user.name "GitHub Action"
-        git commit -am "Update data" || exit 0
-        git push
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+        with:
+          python-version: '3.8.0'
+      - run: pip install requests
+      - run: python your_script.py
+      
