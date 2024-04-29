@@ -25,6 +25,8 @@ jobs:
         pip install requests
     - name: run script
       run: python ZlibReq.py
+    - name: Add results
+      run: git add results/*.txt
     - name: Commit and push if it changed
       run: |
         git diff
