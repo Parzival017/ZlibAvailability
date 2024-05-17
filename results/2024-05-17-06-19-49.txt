@@ -1,0 +1,31 @@
+domain: z-library.se, contentAvailable: True
+error: Expecting value: line 1 column 1 (char 0)
+ok200: False
+domain: z-library.rs, contentAvailable: True
+ok200: True
+domain: z-library.do, contentAvailable: True
+ok200: True
+domain: singlelogin.re, contentAvailable: True
+ok200: True
+domain: zlibrary-global.se, contentAvailable: True
+ok200: True
+domain: 1lib.sk, contentAvailable: True
+ok200: True
+domain: z-library.sx, contentAvailable: True
+ok200: True
+domain: zlibrary-asia.se, contentAvailable: True
+error: Expecting value: line 1 column 1 (char 0)
+ok200: False
+domain: zlibrary-east.se, contentAvailable: True
+ok200: True
+domain: z-lib.gs, contentAvailable: True
+ok200: True
+domain: singlelogin.se, contentAvailable: True
+ok200: True
+domain: singlelogin.rs, contentAvailable: True
+ok200: True
+domain: single-login.ru, contentAvailable: True
+error: HTTPSConnectionPool(host='single-login.ru', port=443): Max retries exceeded with url: /eapi/info/ok (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7f9bb96e3be0>: Failed to resolve 'single-login.ru' ([Errno -2] Name or service not known)"))
+ok200: False
+domain: zlibrary-redirect.se, contentAvailable: True
+ok200: True
